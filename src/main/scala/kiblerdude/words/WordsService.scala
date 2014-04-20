@@ -5,6 +5,7 @@ import spray.routing._
 import spray.http._
 import spray.json._
 import DefaultJsonProtocol._
+import MediaTypes._
 
 class WordsServiceActor extends Actor with WordsService {
   def actorRefFactory = context
@@ -23,10 +24,12 @@ trait WordsService extends HttpService {
       }
     } ~
     path("anagrams" / ".*".r) { word =>
-      get {      
-        dictionary.getAnagrams(word) match {
-          case None => complete(StatusCodes.NotFound)
-          case Some(x) => complete(x.toJson.toString)
+      get {  
+        respondWithMediaType(`application/json`) {
+	        dictionary.getAnagrams(word) match {
+	          case None => complete(StatusCodes.NotFound)
+	          case Some(x) => complete(x.toJson.toString)
+	        }
         }
       }
     } ~

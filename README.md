@@ -25,7 +25,7 @@ Returns `200 OK` and a list of anagrams for the `word` or `404 Not Found` if the
 #####Example
 [http://localhost:8080/anagrams/tea](http://localhost:8080/anagrams/tea)
 
-	List(eat)
+	["eat"]
 
 
 ##Development
