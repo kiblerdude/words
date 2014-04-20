@@ -1,6 +1,6 @@
 #Words
 
-Words service developed using [http://spray.io](http://spray.io "spray.io").
+Words service developed using [spray](http://spray.io "spray.io").
 
 ##APIs
 
