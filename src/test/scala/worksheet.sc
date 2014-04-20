@@ -1,5 +1,7 @@
 object worksheet {
-  println("Welcome to the Scala worksheet")       //> Welcome to the Scala worksheet
+
+	import spray.json._
+	import DefaultJsonProtocol._
   
   val words = List("tea", "eat", "hello", "world")//> words  : List[String] = List(tea, eat, hello, world)
   
@@ -8,4 +10,8 @@ object worksheet {
                                                   //| -> List(world), aet -> List(tea, eat), ehllo -> List(hello))
   
   val anagram = anagrams.get("aet")               //> anagram  : Option[List[String]] = Some(List(tea, eat))
+  
+  val json = anagram.get.toJson                   //> json  : spray.json.JsValue = ["tea","eat"]
+  
+  json.toString                                   //> res0: String = ["tea","eat"]
 }

@@ -3,16 +3,14 @@ package kiblerdude.words
 import akka.actor.Actor
 import spray.routing._
 import spray.http._
-import spray.http.MediaTypes._
-import spray.httpx.marshalling.ToResponseMarshallable.isMarshallable
-import spray.routing.Directive.pimpApply
+import spray.json._
+import DefaultJsonProtocol._
 
 class WordsServiceActor extends Actor with WordsService {
   def actorRefFactory = context
   def receive = runRoute(route)
 }
 
-// TODO return JSON response
 // TODO subwords API
 
 trait WordsService extends HttpService {
@@ -28,7 +26,7 @@ trait WordsService extends HttpService {
       get {      
         dictionary.getAnagrams(word) match {
           case None => complete(StatusCodes.NotFound)
-          case Some(x) => complete(x.toString)
+          case Some(x) => complete(x.toJson.toString)
         }
       }
     } ~
