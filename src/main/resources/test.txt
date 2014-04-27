@@ -5,3 +5,6 @@ eat
 firetruck
 fire
 truck
+peanut
+pea
+nut

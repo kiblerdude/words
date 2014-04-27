@@ -33,6 +33,11 @@ trait WordsService extends HttpService {
         }
       }
     } ~
+    path("subwords" / ".*".r) { word =>
+      get {
+        complete(StatusCodes.NotFound)
+      }
+    } ~
     path("stats") {
       get {
           complete {

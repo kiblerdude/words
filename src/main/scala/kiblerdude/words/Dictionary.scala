@@ -45,5 +45,12 @@ class Dictionary(file: String) {
 		  else Some(filtered)
 		}
     }
-  }  
+  }
+  
+  /**
+   * Returns a list of words within the provided word.
+   */
+  def getSubWords(word : String) : Option[List[String]] = {
+    None
+  }
 }
